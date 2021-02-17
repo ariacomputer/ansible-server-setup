@@ -36,3 +36,22 @@
       user: "{{ create_user }}"
       state: present
       key: "{{ copy_github_key }}"
+
+# Install Packages
+  - name: Update apt
+    apt: update_cache=yes
+
+  - name: Install required system packages
+    apt: name={{ sys_packages }} state=latest
+
+# UFW Setup
+  - name: UFW - Allow SSH connections
+    ufw:
+      rule: allow
+      name: OpenSSH
+
+  - name: UFW - Deny all other incoming traffic by default
+    ufw:
+      state: enabled
+      policy: deny
+      direction: incoming
