@@ -1,5 +1,0 @@
----
-create_user: server_admin
-github_key_user: ariacomputer
-copy_github_key: "{{ lookup('url', 'https://github.com/' + lookup('vars', 'github_key_user') + '.keys') }}"
-sys_packages: [ 'curl', 'vim', 'git', 'ufw']

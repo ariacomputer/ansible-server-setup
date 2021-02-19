@@ -1,0 +1,4 @@
+---
+- copy:
+    src: "{{ role_path }}/files/99-mail-rsyslog.conf"
+    dest: /etc/rsyslog.d/99-mail-rsyslog.conf 

@@ -6,3 +6,12 @@
 
   roles:
     - role: common
+
+- hosts: web
+  become: true
+  vars_files:
+    - vars/web.yml
+  
+  roles:
+    - role: datadog.datadog
+      become: true
