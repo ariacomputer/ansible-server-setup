@@ -1,0 +1,19 @@
+---
+- name: Check for apt
+  apt: name=aptitude update_cache=yes state=latest force_apt_get=yes
+
+- name: Install required system packages
+  apt: name={{ docker_packages }} state=latest
+
+- name: Install apt-key from keyserver
+  apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    state: present
+
+- name: Install Docker apt repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+    state: present
+
+- name: Install Docker CE apt package
+  apt: name=docker-ce state=latest update_cache=yes

@@ -12,6 +12,15 @@
   vars_files:
     - vars/web.yml
   
+  #roles:
+  #  - role: datadog.datadog
+  #    become: true
+
+- hosts: docker
+  become: true
+  vars_files:
+    - vars/docker.yml
+
   roles:
-    - role: datadog.datadog
+    - role: docker
       become: true
